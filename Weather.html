@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+	<!-- My own CSS -->
+	<link href="newstyle.css" rel="stylesheet">
+	<link href='https://fonts.googleapis.com/css?family=Akaya Telivigala' rel='stylesheet'>
+	<title>News</title>
+	<style>
+		/*Colour Coding Each Segment*/
+		body {
+			background-color: rgb(216, 168, 210);
+			color: rgb(70, 2, 61);
+			padding: 20;
+		}
+
+		.container2 {
+			color: rgb(70, 2, 61);
+		}
+
+		.weather {
+			text-align: center;
+		}
+
+		ul.navbar2 {
+			list-style-type: none;
+			margin: 0px;
+			padding: 0px;
+			overflow: hidden;
+			background-color: rgb(70, 2, 61);
+		}
+
+		li a.navbar2:hover:not(.active) {
+			background-color: rgb(216, 168, 210);
+			color: black;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="main-container2">
+		<!--This one is mainly to keep the footer at the bottom of the viewport-->
+		<section>
+			<ul class="navbar2">
+				<li class="navbar2"><img src="Images\News.png" height="50" width="80"></li>
+				<li class="navbar2"><a class="navbar2" href="Home.html">Top Headlines</a></li>
+				<li class="navbar2"><a class="navbar2" href="Business.html">Business</a></li>
+				<li class="navbar2"><a class="navbar2" href="Politics.html">Politics</a></li>
+				<li class="navbar2"><a class="navbar2" href="Sports.html">Sports</a></li>
+				<li class="navbar2"><a class="navbar2" href="Entertainment.html">Entertainment</a>
+				</li>
+				<li class="navbar2"><a class="navbar2" href="Tech.html">Technology</a></li>
+				<li class="navbar2" id="active"><a class="navbar2" id="active" href="Weather.html">Weather</a></li>
+				<li class="navbar2"><a class="navbar2" href="Covid19.html">COVID-19</a>
+				</li>
+				<div class="search-container2">
+					<form action="Search.html" method="get">
+						<input type="text" placeholder="Search" name="q">
+						<button type="submit"><img src="Images\search.png" height="21" width="35"></button>
+					</form>
+				</div>
+			</ul>
+		</section>
+
+		<div class="weather">
+			<div class="input">
+				<input type="text" placeholder="Enter city/locality name" class="city">
+				<select name="unit" class="unit">
+					<option value="metric">Metric</option>
+					<option value="imperial">Imperial</option>
+				</select>
+				<input type="submit" value="Submit" class="submit">
+			</div>
+			<br>
+			<h1 class="city_name" id="city_name"></h1>
+			<div class="icon"><img src="" id="icon"></div>
+			<p class="coord"></p>
+			<p class="desc"></p>
+			<p class="temp"></p>
+			<p class="min_temp"></p>
+			<p class="max_temp"></p>
+			<p class="humidity"></p>
+			<p class="pressure"></p>
+			<p class="real_feel"></p>
+			<p class="wind_speed"></p>
+			<p class="clouds"></p>
+			<p class="visibility"></p>
+			<P class="H1"></P>
+			<p class="HourlyData"></p>
+			<p class="D1"></p>
+			<p class="DailyData"></p>
+		</div>
+
+		<script type='text/javascript' src='config.js'></script>
+		<script src="weatherscript.js"></script>
+</body>
+
+</html>

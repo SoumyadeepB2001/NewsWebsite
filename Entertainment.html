@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+	<!-- My own CSS -->
+	<link href="newstyle.css" rel="stylesheet">
+	<link href='https://fonts.googleapis.com/css?family=Akaya Telivigala' rel='stylesheet'>
+	<title>News</title>
+	<style>
+		/*Colour Coding Each Segment*/
+		.container2 {
+			color: rgb(235, 136, 23);
+		}
+
+		body {
+			background-color: rgb(236, 189, 134);
+		}
+
+		ul.navbar2 {
+			list-style-type: none;
+			margin: 0px;
+			padding: 0px;
+			overflow: hidden;
+			background-color: rgb(235, 136, 23);
+		}
+
+		li a.navbar2:hover:not(.active) {
+			background-color: rgb(236, 189, 134);
+			color: black;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="main-container2">
+		<!--This one is mainly to keep the footer at the bottom of the viewport-->
+		<section>
+			<ul class="navbar2">
+				<li class="navbar2"><img src="Images\News.png" height="50" width="80"></li>
+				<li class="navbar2"><a class="navbar2" href="Home.html">Top Headlines</a></li>
+				<li class="navbar2"><a class="navbar2" href="Business.html">Business</a></li>
+				<li class="navbar2"><a class="navbar2" href="Politics.html">Politics</a></li>
+				<li class="navbar2"><a class="navbar2" href="Sports.html">Sports</a></li>
+				<li class="navbar2" id="active"><a class="navbar2" id="active"
+						href="Entertainment.html">Entertainment</a>
+				</li>
+				<li class="navbar2"><a class="navbar2" href="Tech.html">Technology</a></li>
+				<li class="navbar2"><a class="navbar2" href="Weather.html">Weather</a></li>
+				<li class="navbar2"><a class="navbar2" href="Covid19.html">COVID-19</a>
+				</li>
+				<div class="search-container2">
+					<form action="Search.html" method="get">
+						<input type="text" placeholder="Search" name="q">
+						<button type="submit"><img src="Images\search.png" height="21" width="35"></button>
+					</form>
+				</div>
+			</ul>
+		</section>
+
+
+		<div class="container2">
+			<div class="content">
+				<div class="accordion" id="accordionExample">
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type='text/javascript' src='config.js'></script>
+	<script>
+		const key = config.gnews;
+		let url = 'https://gnews.io/api/v4/search?q=entertainment&lang=en&token=' + key;
+		var list = document.getElementById('accordionExample');
+		var code = "";
+
+		fetch(url)
+			.then(function (response) {
+				return response.json();
+			})
+			.then(function (data) {
+				var i = 0;
+				console.log(data);
+				data.articles.forEach(article => {
+					let newList = `<div class="accordion-item">
+					<h2 class="accordion-header" id="flush-heading${i}">
+      				<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse${i}" aria-expanded="false" aria-controls="flush-collapse${i}">
+        			${data.articles[i].title}
+      				</button>
+    				</h2>
+    				<div id="flush-collapse${i}" class="accordion-collapse collapse" aria-labelledby="flush-heading${i}" data-bs-parent="#accordionFlushExample">
+      				<div class="accordion-body">${data.articles[i].description}<p><a href="${data.articles[i].url}" target="_blank">   Read More..</a></p></div>
+    				</div>
+  					</div>`
+					i++;
+					//console.log(i);
+					code += newList;
+					//console.log(code);
+				})
+				list.innerHTML = code;
+			}
+
+			)
+			.catch(err => alert(err));
+
+	</script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+		crossorigin="anonymous"></script>
+</body>
+
+</html>
